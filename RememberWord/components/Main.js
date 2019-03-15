@@ -14,6 +14,17 @@ class Main extends Component {
         super(props)
     }
 
+    getWordList(){
+        const { filterStatus, arrWords } = this.props
+        if(filterStatus === 'MEMORIZED'){
+            return arrWords.filter(e => e.memorized)
+        }
+        if( filterStatus === 'NEED_PRACTICE'){
+            return arrWords.filter(e => !e.memorized)
+        }
+        return arrWords
+    }
+
     render() {
         return (
             <View
@@ -30,7 +41,7 @@ class Main extends Component {
                     }}
                 >
                     <FlatList
-                        data={this.props.arrWords}
+                        data={this.getWordList()}
                         renderItem={({ item }) => <Word myWord={item}></Word>}
                         keyExtractor={item => item.id}
                     />
