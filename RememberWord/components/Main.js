@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {
         View,
-        Text
+        Text,
+        FlatList
 } from 'react-native';
 import { connect } from 'react-redux'
 
@@ -16,9 +17,15 @@ class Main extends Component{
             <View
             style={{
                 backgroundColor: "yellow",
-                flex: 1
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: "center"
             }}>
-                <Text>{this.props.filterStatus}</Text>
+                <FlatList
+                data = {this.props.arrWords}
+                renderItem={({item}) => <Text>{item.en}</Text>}
+                keyExtractor={item => item.id}
+                />
             </View>
         );
     }
@@ -26,7 +33,8 @@ class Main extends Component{
 
 function MapStateToProps(state){
     return {
-        filterStatus: state.filterStatus
+        filterStatus: state.filterStatus,
+        arrWords: state.arrWords
     }
 }
 
