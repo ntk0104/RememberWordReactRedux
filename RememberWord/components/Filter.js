@@ -24,6 +24,10 @@ class Filter extends Component{
         }
     }
 
+    setFilterStatus(actionType){
+        this.props.dispatch({type: actionType})
+    }
+
     render() {
         return(
             <View
@@ -35,6 +39,7 @@ class Filter extends Component{
                 resizeMode: "contain",
             }}>
                 <TouchableOpacity
+                onPress={() => this.setFilterStatus('FILTER_SHOW_ALL')}
                 style={{
                     backgroundColor: 'red',
                     flex: 1,
@@ -44,6 +49,7 @@ class Filter extends Component{
                     <Text style={this.getStyleButton('SHOW_ALL')}>SHOW ALL</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
+                onPress={() => this.setFilterStatus('FILTER_MEMORIZED')}
                 style={{
                     backgroundColor: 'pink',
                     flex: 1,
@@ -53,6 +59,7 @@ class Filter extends Component{
                     <Text style={this.getStyleButton('MEMORIZED')}>MEMORIZED</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
+                onPress={() => this.setFilterStatus('FILTER_NEED_PRACTICE')}
                 style={{
                     backgroundColor: 'blue',
                     flex: 1,
