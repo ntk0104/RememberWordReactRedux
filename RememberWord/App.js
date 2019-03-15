@@ -16,7 +16,7 @@ export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Main/>
+                <Main />
             </Provider>
         );
     }
@@ -24,7 +24,7 @@ export default class App extends Component {
 
 //default State
 const defaultState = {
-    arrWords : [
+    arrWords: [
         { id: 1, en: 'action', vn: 'hành động', memorized: true, isShow: false },
         { id: 2, en: 'actor', vn: 'diễn viên', memorized: false, isShow: false },
         { id: 3, en: 'activity', vn: 'hoạt động', memorized: true, isShow: false },
@@ -46,6 +46,25 @@ const defaultState = {
 
 //reducer
 const reducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case 'FILTER_SHOW_ALL':
+            return {
+                ...state,
+                filterStatus: 'SHOW_ALL'
+            }
+        case 'FILTER_MEMORIZED':
+            return {
+                ...state,
+                filterStatus: 'MEMORIZED'
+            }
+        case 'FILTER_NEED_PRACTICE':
+            return {
+                ...state,
+                filterStatus: 'NEED_PRACTICE'
+            }
+        default:
+            break
+    }
     return state
 }
 
