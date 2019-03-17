@@ -14,6 +14,12 @@ class Form extends Component {
             en: '',
             vn: ''
         }
+
+        this.addNewWord = this.addNewWord.bind(this)
+    }
+    
+    addNewWord = () => {
+        
     }
 
     render() {
@@ -51,6 +57,7 @@ class Form extends Component {
                         marginTop: 5
                     }}></TextInput>
                 <TouchableOpacity
+                    onPress={this.addNewWord}
                     style={{
                         width: 50,
                         height: 30,

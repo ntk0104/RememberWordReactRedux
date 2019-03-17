@@ -4,11 +4,19 @@ import {
     Text,
     TouchableOpacity
 } from 'react-native';
+import {connect} from 'react-redux'
 
 class Header extends Component {
 
     constructor(props) {
         super(props)
+    }
+
+    onAdding() {
+        this.props.dispatch({
+            type: 'CHANGE_ADDING_STATUS'
+        })
+
     }
 
     render() {
@@ -29,7 +37,9 @@ class Header extends Component {
                         fontWeight: "bold",
                         fontSize: 30
                     }}>My Words</Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={this.onAdding.bind(this)}
+                >
                     <Text
                         style={{
                             color: 'blue',
@@ -43,4 +53,5 @@ class Header extends Component {
     }
 }
 
-export default Header
+
+export default connect()(Header)

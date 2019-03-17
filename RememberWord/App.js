@@ -78,12 +78,17 @@ const reducer = (state = defaultState, action) => {
             return {
                 ...state,
                 arrWords: state.arrWords.map(e => {
-                    if(e.id !== action.id) return e
+                    if (e.id !== action.id) return e
                     return {
                         ...e,
                         isShow: !e.isShow
                     }
                 })
+            }
+        case 'CHANGE_ADDING_STATUS':
+            return {
+                ...state,
+                isAdding: ! state.isAdding
             }
         default:
             break

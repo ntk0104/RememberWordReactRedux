@@ -38,7 +38,7 @@ class Main extends Component {
 
                 }}>
                 <Header></Header>
-                <Form></Form>
+                {this.props.isAdding ? <Form></Form> : null}
                 <View
                     style={{
                         flex: 10
@@ -67,7 +67,8 @@ class Main extends Component {
 function MapStateToProps(state) {
     return {
         filterStatus: state.filterStatus,
-        arrWords: state.arrWords
+        arrWords: state.arrWords,
+        isAdding: state.isAdding
     }
 }
 
