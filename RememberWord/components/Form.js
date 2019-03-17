@@ -5,6 +5,7 @@ import {
     TextInput,
     Text
 } from 'react-native';
+import {connect} from 'react-redux'
 
 class Form extends Component {
 
@@ -19,7 +20,17 @@ class Form extends Component {
     }
     
     addNewWord = () => {
-        
+        this.props.dispatch(
+            {
+                type: 'ADD_NEW_TASK',
+                en: this.state.en,
+                vn: this.state.vn
+            }
+        )
+        this.setState({
+            en: '',
+            vn : ''
+        })
     }
 
     render() {
@@ -76,4 +87,4 @@ class Form extends Component {
     }
 }
 
-export default Form
+export default connect()(Form)

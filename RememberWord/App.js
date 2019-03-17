@@ -88,7 +88,20 @@ const reducer = (state = defaultState, action) => {
         case 'CHANGE_ADDING_STATUS':
             return {
                 ...state,
-                isAdding: ! state.isAdding
+                isAdding: !state.isAdding
+            }
+        case 'ADD_NEW_TASK':
+            return {
+                ...state,
+                arrWords: state.arrWords.concat(
+                    {
+                        id: state.arrWords.length + 1,
+                        en: action.en,
+                        vn: action.vn,
+                        memorized: false,
+                        isShow: false
+                    }
+                )
             }
         default:
             break
