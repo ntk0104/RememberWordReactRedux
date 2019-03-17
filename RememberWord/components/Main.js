@@ -7,6 +7,8 @@ import {
 import { connect } from 'react-redux'
 import Word from './Word';
 import Filter from './Filter'
+import Header from './Header'
+import Form from './Form'
 
 class Main extends Component {
 
@@ -35,6 +37,8 @@ class Main extends Component {
                     justifyContent: "center",
 
                 }}>
+                <Header></Header>
+                <Form></Form>
                 <View
                     style={{
                         flex: 10

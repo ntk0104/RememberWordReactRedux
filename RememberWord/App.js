@@ -25,7 +25,7 @@ export default class App extends Component {
 //default State
 const defaultState = {
     arrWords: [
-        { id: 1, en: 'action', vn: 'hành động', memorized: true, isShow: false },
+        { id: 1, en: 'action', vn: 'hành động', memorized: true, isShow: true },
         { id: 2, en: 'actor', vn: 'diễn viên', memorized: false, isShow: false },
         { id: 3, en: 'activity', vn: 'hoạt động', memorized: true, isShow: false },
         { id: 4, en: 'active', vn: 'chủ động', memorized: true, isShow: false },
@@ -61,6 +61,29 @@ const reducer = (state = defaultState, action) => {
             return {
                 ...state,
                 filterStatus: 'NEED_PRACTICE'
+            }
+        case 'CHANGE_MEMORIZED_STATUS':
+            return {
+                ...state,
+                arrWords: state.arrWords.map(e => {
+                    if (e.id !== action.id) return e
+                    return {
+                        ...e,
+                        memorized: !e.memorized
+                    };
+                })
+
+            }
+        case 'CHANGE_DISPLAY_STATUS':
+            return {
+                ...state,
+                arrWords: state.arrWords.map(e => {
+                    if(e.id !== action.id) return e
+                    return {
+                        ...e,
+                        isShow: !e.isShow
+                    }
+                })
             }
         default:
             break
