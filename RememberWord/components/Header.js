@@ -5,18 +5,12 @@ import {
     TouchableOpacity
 } from 'react-native';
 import {connect} from 'react-redux'
+import {toggleIsAdding} from '../redux/actionCreators'
 
 class Header extends Component {
 
     constructor(props) {
         super(props)
-    }
-
-    onAdding() {
-        this.props.dispatch({
-            type: 'CHANGE_ADDING_STATUS'
-        })
-
     }
 
     render() {
@@ -38,7 +32,7 @@ class Header extends Component {
                         fontSize: 30
                     }}>My Words</Text>
                 <TouchableOpacity
-                    onPress={this.onAdding.bind(this)}
+                    onPress={() => this.props.toggleIsAdding()}
                 >
                     <Text
                         style={{
@@ -53,5 +47,5 @@ class Header extends Component {
     }
 }
 
-
-export default connect()(Header)
+// null co nghia la ko su dung mapStateToProps, toggleIsAdding la mapActionToProps
+export default connect(null, {toggleIsAdding})(Header)
