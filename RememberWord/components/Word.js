@@ -6,26 +6,12 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux'
+import {changeMemorizedStatus, changeDisplayStatus} from '../redux/actionCreators'
 
 class Word extends Component {
 
     constructor(props) {
         super(props)
-    }
-
-    changeMemmorizedStatus() {
-        this.props.dispatch({
-            type: 'CHANGE_MEMORIZED_STATUS',
-            id: this.props.myWord.id
-        })
-
-    }
-
-    changeDisplayStatus() {
-        this.props.dispatch({
-            type: 'CHANGE_DISPLAY_STATUS',
-            id: this.props.myWord.id
-        })
     }
 
     render() {
@@ -60,7 +46,7 @@ class Word extends Component {
                             padding: 10,
                             justifyContent: 'space-around'
                         }}
-                        onPress={this.changeMemmorizedStatus.bind(this)}
+                        onPress={() => this.props.changeMemorizedStatus(this.props.myWord.id)}
                     >
                         <Text
                             style={{
@@ -115,7 +101,7 @@ class Word extends Component {
                             padding: 10,
                             justifyContent: 'space-around'
                         }}
-                        onPress={this.changeDisplayStatus.bind(this)}
+                        onPress={() => this.props.changeDisplayStatus(this.props.myWord.id)}
                     >
                         <Text
                             style={{
@@ -167,4 +153,4 @@ const styles = StyleSheet.create(
     }
 )
 
-export default connect(mapStatesToProps)(Word)
+export default connect(mapStatesToProps, {changeDisplayStatus, changeMemorizedStatus})(Word)
