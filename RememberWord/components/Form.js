@@ -22,7 +22,7 @@ class Form extends Component {
     addNewWord = () => {
         this.props.dispatch(
             {
-                type: 'ADD_NEW_TASK',
+                type: 'ADD_NEW_WORD',
                 en: this.state.en,
                 vn: this.state.vn
             }
