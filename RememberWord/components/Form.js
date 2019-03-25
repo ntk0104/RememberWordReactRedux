@@ -6,6 +6,7 @@ import {
     Text
 } from 'react-native';
 import {connect} from 'react-redux'
+import {addNewWord} from '../redux/actionCreators'
 
 class Form extends Component {
 
@@ -20,13 +21,7 @@ class Form extends Component {
     }
     
     addNewWord = () => {
-        this.props.dispatch(
-            {
-                type: 'ADD_NEW_WORD',
-                en: this.state.en,
-                vn: this.state.vn
-            }
-        )
+        this.props.addNewWord(this.state.en, this.state.vn)
         this.setState({
             en: '',
             vn : ''
@@ -87,4 +82,4 @@ class Form extends Component {
     }
 }
 
-export default connect()(Form)
+export default connect(null, {addNewWord})(Form)
