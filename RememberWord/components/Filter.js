@@ -5,6 +5,7 @@ import {
     Text
 } from 'react-native';
 import { connect } from 'react-redux'
+import {showAll, showMemorized, showNeedPractice} from '../redux/actionCreators'
 
 class Filter extends Component {
 
@@ -39,7 +40,7 @@ class Filter extends Component {
                     resizeMode: "contain",
                 }}>
                 <TouchableOpacity
-                    onPress={() => this.setFilterStatus('FILTER_SHOW_ALL')}
+                    onPress={() => this.props.showAll()}
                     style={{
                         backgroundColor: 'red',
                         flex: 1,
@@ -49,7 +50,7 @@ class Filter extends Component {
                     <Text style={this.getStyleButton('SHOW_ALL')}>SHOW ALL</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => this.setFilterStatus('FILTER_MEMORIZED')}
+                    onPress={() => this.props.showMemorized()}
                     style={{
                         backgroundColor: 'pink',
                         flex: 1,
@@ -59,7 +60,7 @@ class Filter extends Component {
                     <Text style={this.getStyleButton('MEMORIZED')}>MEMORIZED</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => this.setFilterStatus('FILTER_NEED_PRACTICE')}
+                    onPress={() => this.props.showNeedPractice()}
                     style={{
                         backgroundColor: 'blue',
                         flex: 1,
@@ -79,4 +80,9 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Filter)
+export default connect(mapStateToProps, {
+    showAll, 
+    showMemorized, 
+    showNeedPractice
+}
+)(Filter)

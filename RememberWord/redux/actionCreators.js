@@ -25,3 +25,21 @@ export function changeDisplayStatus(id) {
         id
     }
 }
+
+export function showAll(){
+    return {
+        type: 'FILTER_SHOW_ALL'
+    }
+}
+
+export function showMemorized(){
+    return {
+        type: 'FILTER_MEMORIZED'
+    }
+}
+
+export function showNeedPractice(){
+    return {
+        type: 'FILTER_NEED_PRACTICE'
+    }
+}
